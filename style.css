@@ -28,3 +28,13 @@ section:hover {
 .custom-border:hover {
     transform: scale(1.2); /* Scale the image to 120% of its original size */
 }
+
+.w-70 {
+    width: 70% !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #0077b6; /* 您想要的顏色 */
+    border-radius: 50%; /* 可選：使箭頭背景圓形 */
+}
