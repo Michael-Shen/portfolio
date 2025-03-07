@@ -11,16 +11,29 @@
     <header class="bg-primary text-white text-center py-4">
         <h1>FinTech Stock Selection System</h1>
         <p>Stock Market Analysis & Automated Trading</p>
+        <a href="index.html" class="text-white">Back to Home</a>
     </header>
     
     <section class="container mt-4">
         <h2>Overview</h2>
         <p>This project fetches Taiwan stock market data, implements stock selection strategies, and integrates a full CI/CD pipeline for development and testing.</p>
+        <ul>
+            <li>Designed and deployed a multibranch pipeline in Jenkins to automate the crawling, strategy execution, and backtesting processes for stock market data.</li>
+            <li>Ensured seamless integration and deployment by automating testing and validation across multiple branches.</li>
+            <li>Optimized pipeline execution time, improving development efficiency and reducing deployment risks.</li>
+        </ul> 
     </section>
     
     <section class="container mt-4">
         <h2>Pipeline</h2>
-        <img src="images/pipeline.png" class="img-fluid" alt="Stock Selection Pipeline">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/multibranches.png" class="img-fluid custom-border" alt="Stock Selection Pipeline">
+            </div>
+            <div class="col-md-6">
+                <img src="images/stages.png" class="img-fluid custom-border" alt="Stages">
+            </div>
+        </div>
     </section>
     
     <section class="container mt-4">
@@ -29,7 +42,11 @@
             <li>Automated data fetching and preprocessing</li>
             <li>Advanced stock selection algorithms</li>
             <li>Real-time stock trend analysis</li>
+            <li>Back testing</li>
             <li>Integration with CI/CD pipelines for continuous updates</li>
+            <li>Streamline the SW engineering flow (dev , test, deploy)</li>
+            <li>MultiBranch pipeline</li>
+            <li>PR-based pipeline (Pull Request) </li>
         </ul>
     </section>
     
@@ -47,6 +64,7 @@
     
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2025 Michael Shen. All rights reserved.</p>
+        <a href="index.html" class="text-white">Back to Home</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
