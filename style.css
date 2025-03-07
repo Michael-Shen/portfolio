@@ -5,6 +5,13 @@ section h2 {
     padding-left: 10px; /* 讓文字與條紋有點距離 */
     margin-bottom: 15px;
 }
+section {
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
+}
+section:hover {
+    transform: scale(1.05); /* Scale the section to 105% of its original size */
+    background-color: #faf7dd; /* 淺黃色背景 */
+}
 .profile-pic {
     max-height: 100%; /* Ensures it doesn’t exceed the parent container */
     max-width: 120px; /* Adjust the width to be smaller */
