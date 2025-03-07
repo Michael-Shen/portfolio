@@ -14,9 +14,18 @@
     </header>
     
     <section id="contact" class="container mt-4">
-        <h2>Contact Information</h2>
-        <p><strong>Mobile:</strong> +886-928-075-398</p>
-        <p><strong>Email:</strong> webmic1209@gmail.com</p>
+        <div class="row align-items-center">
+            <!-- Left side: Contact Details -->
+            <div class="col-md-8 d-flex flex-column justify-content-center">
+                <h2>Contact Information</h2>
+                <p><strong>Mobile:</strong> +886-928-075-398</p>
+                <p><strong>Email:</strong> webmic1209@gmail.com</p>
+            </div>
+            <!-- Right side: Profile Picture -->
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="michael.jpg" alt="Michael Shen" class="img-fluid profile-pic">
+            </div>
+        </div>
     </section>
     
     <section id="summary" class="container mt-4">
@@ -87,8 +96,10 @@
             <div class="card-body">
                 <h3 class="card-title">FinTech Stock Selection System</h3>
                 <p class="card-text">Created a private repository that fetches Taiwan stock market data, implements stock selection strategies, and integrates a full CI/CD pipeline for development and testing.</p>
+                <a href="stock-selection.html" target="_blank" class="btn btn-primary">Learn More</a>
             </div>
         </div>
+        
     </section>
     
     <footer class="bg-dark text-white text-center py-3">
