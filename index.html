@@ -13,7 +13,7 @@
         <p>Software & Manufacturing Test Engineer | Project Manager</p>
     </header>
     
-    <section id="contact" class="container mt-4">
+    <section id="contact" class="container mt-4  pb-3">
         <div class="row align-items-center">
             <!-- Left side: Contact Details -->
             <div class="col-md-8 d-flex flex-column justify-content-center">
@@ -28,12 +28,12 @@
         </div>
     </section>
     
-    <section id="summary" class="container mt-4">
+    <section id="summary" class="container mt-4  pb-3">
         <h2>Summary</h2>
         <p>Experienced software and manufacturing test engineer with expertise in automation, project management, and hardware validation. Proven track record in leading cross-functional teams, optimizing test processes, and ensuring product quality in global organizations such as IBM, Cypress, and Synopsys. Extensive experience in working with ODM partners (Compal, Foxconn, etc.) to streamline production. Strong background in CI/CD automation, system validation, and large-scale testing infrastructure.</p>
     </section>
     
-    <section id="experience" class="container mt-4">
+    <section id="experience" class="container mt-4  pb-3">
         <h2>Professional Experience</h2>
         <h3>Cypress Semiconductor and Parade Technologies, Ltd (Apr 2014 – Present)</h3>
         <ul>
@@ -62,17 +62,51 @@
         </ul>
     </section>
     
-    <section id="certifications" class="container mt-4">
+    <section id="certifications" class="container mt-4  pb-3">
         <h2>Certifications & Education</h2>
         <ul>
-            <li>Project Management Professional (PMP®) #<a href="https://www.pmi.org/certifications/certification-resources/registry?certificationId=2003785&firstName=KUNGHUNG&lastName=SHEN#search-info" target="_blank">2003785 </a></li>
+            <li>
+                Machine Learning Specialization, Stanford University & DeepLearning.AI
+                <a href="#" class="cert-link" data-bs-toggle="modal" data-bs-target="#mlCertModal">[View Certificate]</a>
+            </li>
+            <li>
+                Project Management Professional (PMP®)
+                <a href="#" class="cert-link" data-bs-toggle="modal" data-bs-target="#pmpCertModal">[2003785]</a>
+            </li>          
             <li>TOEIC Score: 830</li>
             <li>M.A. in Electrical Engineering, National Taiwan Ocean University (2008 – 2010)</li>
             <li>B.A. in Computer Science & Information Engineering, Soochow University</li>
         </ul>
     </section>
-    
-    <section id="skills" class="container mt-4">
+
+        <!-- Machine Learning Certificate Modal -->
+    <div class="modal fade cert-modal" id="mlCertModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="ML_cert.png" alt="ML Certificate" class="img-fluid">
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PMP Certificate Modal -->
+    <div class="modal fade cert-modal" id="pmpCertModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="PMP.png" alt="PMP Certificate" class="img-fluid">
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="skills" class="container mt-4 pb-3">
         <h2>Technical Skills</h2>
         <ul>
             <li>Test Automation: Selenium, Postman, unittest, JMeter</li>
@@ -81,10 +115,11 @@
             <li>QA & Testing: Functional/Non-functional, Stress, Regression Testing</li>
             <li>CI/CD & DevOps: Git, GitHub, Jenkins</li>
             <li>Project Management: PMP® Certified, Cross-functional Leadership, Customer Engagement</li>
+            <li>Machine Learning: Neural network, GenAI</li>
         </ul>
     </section>
     
-    <section id="projects" class="container mt-4">
+    <section id="projects" class="container mt-4 mb-5 pb-3">
         <h2>Projects</h2>
         <div class="card mt-3">
             <div class="card-body">
@@ -92,8 +127,8 @@
                 <p class="card-text">Developed a private repository to assist ODM partners in detecting touch panel defects, improving manufacturing quality.</p>
             </div>
         </div>
-        <div class="card mt-3">
-            <div class="card-body">
+        <div class="card mt-3  mb-4">
+            <div class="card-body  ">
                 <h3 class="card-title">FinTech Stock Selection System</h3>
                 <p class="card-text">Created a private repository that fetches Taiwan stock market data, implements stock selection strategies, and integrates a full CI/CD pipeline for development and testing.</p>
                 <a href="stock-selection.html" target="_blank" class="btn btn-primary">Learn More</a>
