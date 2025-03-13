@@ -115,10 +115,47 @@
             <li>QA & Testing: Functional/Non-functional, Stress, Regression Testing</li>
             <li>CI/CD & DevOps: Git, GitHub, Jenkins</li>
             <li>Project Management: PMP® Certified, Cross-functional Leadership, Customer Engagement</li>
-            <li>Machine Learning: Neural network, GenAI</li>
+            <li>Machine Learning: Neural network, GenAI
+                <a href="#" class="badge rounded-pill bg-success" data-bs-toggle="modal" data-bs-target="#mlProjectModal">Repositories</a>
+            </li>
         </ul>
     </section>
-    
+
+    <!-- ML Project Modal -->
+    <div class="modal fade cert-modal" id="mlProjectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- a bootstrap table to list out my repo link -->
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ML Algorithms</th>
+                                <th>Repository</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Unsupervised Learning - Kmeans</td>
+                                <td>
+                                    <a href="https://github.com/Michael-Shen/ML_Projects/blob/main/Clustering/Kmeans_Customer_Segmentation.ipynb" target="_blank">Kmeans_Customer_Segmentation</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Unsupervised Learning - Kmeans</td>
+                                <td>
+                                    <a href="https://github.com/Michael-Shen/ML_Projects/blob/main/Clustering/Kmeans_Heart_Disease.ipynb" target="_blank">Kmeans_Heart_Disease</a>
+                                </td>
+                            </tr>
+                        </tbody>    
+                    </table>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <section id="projects" class="container mt-4 mb-5 pb-3">
         <h2>Projects</h2>
         <div class="card mt-3">
