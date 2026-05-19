@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Shen - Program Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 40%, #f7fee7 100%);
+            background-attachment: fixed;
+            color: #1e293b;
+            padding-top: 80px;
+        }
+
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #15803d !important;
+        }
+
+        .nav-back {
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-back:hover {
+            color: #15803d;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #15803d 0%, #0f766e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #dcfce7;
+            position: relative;
+        }
+
+        #contact h2 { background: none; -webkit-text-fill-color: white; color: white !important; border-bottom-color: rgba(255,255,255,0.25); }
+        #summary h2 { border-bottom-color: #86efac; }
+        #experience h2 { border-bottom-color: #6ee7b7; }
+        #skills h2 { border-bottom-color: #34d399; }
+        #certifications h2 { border-bottom-color: #84cc16; }
+        #projects h2 { border-bottom-color: #16a34a; }
+
+        section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #166534;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        #contact {
+            background: linear-gradient(135deg, #166534 0%, #15803d 50%, #0f766e 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(22, 101, 52, 0.28);
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.92);
+        }
+
+        .contact-details strong {
+            color: #bbf7d0;
+            font-weight: 600;
+        }
+
+        .profile-pic-section {
+            flex-shrink: 0;
+        }
+
+        .profile-pic-section img {
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.75);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.28), 0 0 0 6px rgba(187,247,208,0.2);
+        }
+
+        #summary,
+        #experience,
+        #skills,
+        #certifications,
+        #projects {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        #summary p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-item h3 {
+            color: #15803d;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item ul li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .experience-item ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skills-list li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skills-list li::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #15803d;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, #dcfce7 0%, #ecfdf5 100%);
+            color: #15803d;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .skills-list li:nth-child(4n+1) .skill-badge { background: linear-gradient(135deg, #dcfce7, #ecfdf5); color: #15803d; }
+        .skills-list li:nth-child(4n+1)::before { background: #15803d; }
+        .skills-list li:nth-child(4n+2) .skill-badge { background: linear-gradient(135deg, #ccfbf1, #d1fae5); color: #0f766e; }
+        .skills-list li:nth-child(4n+2)::before { background: #0f766e; }
+        .skills-list li:nth-child(4n+3) .skill-badge { background: linear-gradient(135deg, #ecfccb, #f7fee7); color: #65a30d; }
+        .skills-list li:nth-child(4n+3)::before { background: #65a30d; }
+        .skills-list li:nth-child(4n) .skill-badge { background: linear-gradient(135deg, #bbf7d0, #dcfce7); color: #166534; }
+        .skills-list li:nth-child(4n)::before { background: #166534; }
+
+        .cert-item {
+            padding: 1rem;
+            background: #f0fdf4;
+            border-left: 4px solid #15803d;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        #certifications .cert-item:nth-child(1) { border-left-color: #16a34a; background: linear-gradient(to right, #ecfdf5, #fafafa); }
+        #certifications .cert-item:nth-child(2) { border-left-color: #0f766e; background: linear-gradient(to right, #f0fdfa, #fafafa); }
+        #certifications .cert-item:nth-child(3) { border-left-color: #65a30d; background: linear-gradient(to right, #f7fee7, #fafafa); }
+        #certifications .cert-item:nth-child(4) { border-left-color: #15803d; background: linear-gradient(to right, #dcfce7, #fafafa); }
+        #certifications .cert-item:nth-child(5) { border-left-color: #0891b2; background: linear-gradient(to right, #ecfeff, #fafafa); }
+        #certifications .cert-item:nth-child(6) { border-left-color: #166534; background: linear-gradient(to right, #ecfdf5, #fafafa); }
+        #certifications .cert-item:nth-child(7) { border-left-color: #22c55e; background: linear-gradient(to right, #f0fdf4, #fafafa); }
+
+        .cert-link {
+            color: #15803d;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .cert-link:hover {
+            color: #166534;
+            text-decoration: underline;
+        }
+
+        .project-tabs {
+            border-bottom: none;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tabs .nav-link {
+            border: none;
+            border-radius: 999px;
+            padding: 0.7rem 1.2rem;
+            font-weight: 600;
+            color: #475569;
+            background: #dcfce7;
+            transition: all 0.3s ease;
+        }
+
+        .project-tabs .nav-link.active {
+            color: white;
+            background: linear-gradient(135deg, #15803d 0%, #0f766e 100%);
+            box-shadow: 0 8px 18px rgba(21, 128, 61, 0.24);
+        }
+
+        .project-tab-panel {
+            padding-top: 0.5rem;
+        }
+
+        .ml-project-table-wrapper {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 1px solid #bbf7d0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid #15803d;
+        }
+
+        #projects .project-card:nth-child(2) { border-top-color: #0f766e; }
+        #projects .project-card:nth-child(3) { border-top-color: #65a30d; }
+
+        .project-card:hover {
+            box-shadow: 0 12px 24px rgba(21, 128, 61, 0.1);
+            transform: translateY(-4px);
+            border-color: #15803d;
+        }
+
+        .project-card h3 {
+            color: #15803d;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn-learn-more {
+            background: linear-gradient(135deg, #15803d 0%, #0f766e 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-learn-more:hover {
+            background: linear-gradient(135deg, #166534 0%, #115e59 100%);
+            transform: translateX(4px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body img {
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #dcfce7 0%, #ecfdf5 100%);
+        }
+
+        .table thead th {
+            color: #15803d;
+            font-weight: 600;
+            border: none;
+        }
+
+        .table tbody td {
+            color: #475569;
+            vertical-align: middle;
+        }
+
+        .table tbody td a {
+            color: #15803d;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .table tbody td a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-custom {
+            background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+            color: white;
+            padding: 2.5rem 0;
+            margin-top: 5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-custom p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-info .profile-pic-section {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-custom">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="navbar-brand" style="margin: 0;">Michael Shen</div>
+                <span style="background: linear-gradient(135deg, #15803d 0%, #0f766e 100%); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Program Manager</span>
+            </div>
+            <a href="index.html" class="nav-back">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section id="contact" class="container mt-5">
+        <h2>Contact Information</h2>
+        <div class="contact-info">
+            <div class="contact-details">
+                <p><strong>Mobile:</strong> +886-928-075-398</p>
+                <p><strong>Email:</strong> webmic1209@gmail.com</p>
+            </div>
+            <div class="profile-pic-section">
+                <img src="michael.jpg" alt="Michael Shen" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <section id="summary" class="container">
+        <h2>Professional Summary</h2>
+        <p>PMP-certified Technical Program Manager with 15+ years of experience leading cross-functional initiatives across systems validation, manufacturing operations, automation frameworks, and data center environments. Proven track record in driving NPI readiness, aligning global ODM partners, and improving execution through scalable CI/CD processes, workflow automation, and data-driven decision-making. Combines engineering depth with program leadership, stakeholder coordination, and practical AI adoption to improve delivery speed, quality, and operational efficiency.</p>
+    </section>
+
+    <section id="experience" class="container">
+        <h2>Professional Experience</h2>
+
+        <div class="experience-item">
+            <h3>Cypress Semiconductor and Parade Technologies, Ltd</h3>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 0.5rem;">Application Engineer Staff / Test Team Lead</p>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 1rem;">Apr 2014 – Feb 2026</p>
+            <ul>
+                <li>Led manufacturing test execution across NPI and mass-production programs, coordinating teams, vendors, and test resources.</li>
+                <li>Drove readiness planning for production launches, balancing quality, schedule, and operational constraints.</li>
+                <li>Established automated tooling and process improvements to raise production efficiency and reduce execution risk.</li>
+                <li>Partnered with ODM organizations such as Compal and Foxconn to improve test coverage, defect control, and escalation handling.</li>
+                <li>Built and maintained CI/CD workflows using Git, GitHub, and Jenkins to support repeatable delivery and reporting.</li>
+                <li>Used AI-assisted development tools such as GitHub Copilot and Gemini to accelerate workflow automation and technical documentation.</li>
+                <li>Provided on-site enablement and technical coordination for global manufacturing vendors to support smooth mass production.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>IBM</h3>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 0.5rem;">System Assurance and Validation Engineer</p>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 1rem;">Jun 2012 – Mar 2014</p>
+            <ul>
+                <li>Served as Primary Test Owner for IBM memory system validation within high-performance computing programs.</li>
+                <li>Managed validation scope for PowerVM virtualization environments, aligning quality goals with execution milestones.</li>
+                <li>Automated large-scale test deployment flows, improving cross-team throughput and reducing manual coordination overhead.</li>
+                <li>Supported server and storage validation programs to strengthen platform reliability in data center environments.</li>
+                <li>Collaborated across India, the United States, and Taiwan to deliver process improvements in distributed engineering programs.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Synopsys</h3>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 0.5rem;">Software Verification Engineer</p>
+            <p style="color: #15803d; font-weight: 500; margin-bottom: 1rem;">Aug 2010 – May 2012</p>
+            <ul>
+                <li>Delivered verification support for semiconductor design workflows using Perl and shell-based automation.</li>
+                <li>Created and executed validation plans for Verilog and SystemVerilog environments.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Technical Skills</h2>
+        <ul class="skills-list">
+            <li><span class="skill-badge">Program Management</span></li>
+            <li><span class="skill-badge">Cross-functional Leadership</span></li>
+            <li><span class="skill-badge">NPI & Production Readiness</span></li>
+            <li><span class="skill-badge">Risk Management</span></li>
+            <li><span class="skill-badge">Stakeholder Management</span></li>
+            <li><span class="skill-badge">Agile & Scrum</span></li>
+            <li><span class="skill-badge">Process Optimization</span></li>
+            <li><span class="skill-badge">Data-driven Execution</span></li>
+            <li><span class="skill-badge">CI/CD & DevOps</span></li>
+            <li><span class="skill-badge">AI Workflow Adoption</span></li>
+        </ul>
+    </section>
+
+    <section id="certifications" class="container">
+        <h2>Certifications & Education</h2>
+
+        <div class="cert-item">
+            <strong>Google AI Professional Certificate</strong> - 2026
+            <a href="https://www.coursera.org/account/accomplishments/specialization/JO4BLI7LH5DI" target="_blank" class="cert-link">[View Certificate]</a>
+        </div>
+
+        <div class="cert-item">
+            <strong>Project Management Professional (PMP®)</strong> - License #2003785
+            <a href="#" class="cert-link" data-bs-toggle="modal" data-bs-target="#pmpCertModal">[View Certificate]</a>
+        </div>
+
+        <div class="cert-item">
+            <strong>Machine Learning Specialization</strong> - Stanford University & DeepLearning.AI (2025)
+            <a href="#" class="cert-link" data-bs-toggle="modal" data-bs-target="#mlCertModal">[View Certificate]</a>
+        </div>
+
+        <div class="cert-item">
+            <strong>Generative AI for Project Managers</strong>
+            <a href="https://www.credly.com/badges/2e5fcbd8-1a81-4690-bce2-228f858fa756/linked_in_profile" target="_blank" class="cert-link">[View Badge]</a>
+        </div>
+
+        <div class="cert-item">
+            <strong>English Proficiency</strong> - TOEIC Score: 830
+        </div>
+
+        <div class="cert-item">
+            <strong>M.A. in Electrical Engineering</strong> - National Taiwan Ocean University (2008 – 2010)
+        </div>
+
+        <div class="cert-item">
+            <strong>B.A. in Computer Science & Information Engineering</strong> - Soochow University
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+
+        <ul class="nav project-tabs" id="projectTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="featured-projects-tab" data-bs-toggle="tab" data-bs-target="#featured-projects" type="button" role="tab" aria-controls="featured-projects" aria-selected="true">Featured Projects</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ml-projects-tab" data-bs-toggle="tab" data-bs-target="#ml-projects" type="button" role="tab" aria-controls="ml-projects" aria-selected="false">ML Projects</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active project-tab-panel" id="featured-projects" role="tabpanel" aria-labelledby="featured-projects-tab">
+                <div class="project-card">
+                    <h3>Mobile-device Touch Tester</h3>
+                    <p>Developed a private repository to assist ODM partners in detecting touch panel defects, improving manufacturing quality.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>FinTech Stock Selection System</h3>
+                    <p>Developed an automated architecture that programmatically fetches financial market data, integrated with a complete CI/CD development and testing pipeline.</p>
+                    <a href="stock-selection.html" target="_blank" class="btn-learn-more">Learn More →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Critical Choice (Flutter iOS App)</h3>
+                    <p>Designed, built, and launched a production mobile application on the Apple App Store utilizing Flutter/Dart to assist professionals with algorithmic task prioritization.</p>
+                    <a href="https://apps.apple.com/us/app/critical-choice/id6756776644" target="_blank" class="btn-learn-more">View on App Store →</a>
+                </div>
+            </div>
+
+            <div class="tab-pane fade project-tab-panel" id="ml-projects" role="tabpanel" aria-labelledby="ml-projects-tab">
+                <div class="ml-project-table-wrapper">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>ML Algorithms</th>
+                                <th>Repository</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Unsupervised Learning - Kmeans</td>
+                                <td>
+                                    <a href="https://github.com/Michael-Shen/ML_Projects/blob/main/Clustering/Kmeans_Customer_Segmentation.ipynb" target="_blank">Customer Segmentation</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Unsupervised Learning - Kmeans</td>
+                                <td>
+                                    <a href="https://github.com/Michael-Shen/ML_Projects/blob/main/Clustering/Kmeans_Heart_Disease.ipynb" target="_blank">Heart Disease Analysis</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Anomaly Detection</td>
+                                <td>
+                                    <a href="https://github.com/Michael-Shen/ML_Projects" target="_blank">Server Malfunction Detection</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Supervised Learning</td>
+                                <td>Linear & Logistic Regression (TBD)</td>
+                            </tr>
+                            <tr>
+                                <td>Deep Learning</td>
+                                <td>Neural Networks (TBD)</td>
+                            </tr>
+                            <tr>
+                                <td>LLM Fine-tuning</td>
+                                <td>Coming Soon</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="mlCertModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" style="color: #15803d; font-weight: 600;">ML Specialization Certificate</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="ML_cert.png" alt="ML Certificate" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pmpCertModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" style="color: #15803d; font-weight: 600;">PMP® Certificate</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="PMI Certification.pdf" style="width: 100%; height: 600px; border: none; border-radius: 8px;" allowfullscreen></iframe>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <a href="PMI Certification.pdf" download class="btn btn-sm btn-primary">Download PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-custom">
+        <div class="container">
+            <p>&copy; 2025 Michael Shen. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
