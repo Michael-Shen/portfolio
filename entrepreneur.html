@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Shen - Entrepreneur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(251, 191, 36, 0.22), transparent 28%),
+                radial-gradient(circle at top right, rgba(249, 115, 22, 0.16), transparent 24%),
+                linear-gradient(180deg, #fffdf7 0%, #fff7ed 42%, #fffbeb 100%);
+            background-attachment: fixed;
+            color: #1f2937;
+            padding-top: 82px;
+        }
+
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(148, 64, 19, 0.08);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.18);
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #c2410c !important;
+            text-decoration: none;
+        }
+
+        .navbar-brand:hover {
+            color: #9a3412 !important;
+        }
+
+        .container {
+            max-width: 1080px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #9a3412 0%, #c2410c 50%, #f59e0b 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 28px;
+            box-shadow: 0 24px 60px rgba(154, 52, 18, 0.22);
+            margin-bottom: 2rem;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.9fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-section h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.7rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-section p {
+            font-size: 1.03rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .role-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 999px;
+            padding: 0.55rem 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-side-panel {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 22px;
+            padding: 1.5rem;
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-side-panel h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-side-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hero-side-panel li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .hero-side-panel li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(251, 191, 36, 0.16);
+            border-radius: 22px;
+            padding: 2rem;
+            box-shadow: 0 16px 40px rgba(120, 53, 15, 0.08);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            color: #9a3412;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .venture-grid,
+        .app-grid,
+        .video-grid,
+        .ops-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .venture-card,
+        .app-card,
+        .video-card,
+        .ops-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fffbeb 100%);
+            border: 1px solid #fde68a;
+            border-radius: 18px;
+            padding: 1.4rem;
+            height: 100%;
+        }
+
+        .card-kicker {
+            display: inline-block;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            background: #ffedd5;
+            color: #c2410c;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        .venture-card h3,
+        .app-card h3,
+        .video-card h3,
+        .ops-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #7c2d12;
+            margin-bottom: 0.65rem;
+        }
+
+        .venture-card p,
+        .app-card p,
+        .video-card p,
+        .ops-card p,
+        .stack-list li,
+        .placeholder-list li {
+            color: #6b7280;
+            line-height: 1.65;
+        }
+
+        .stack-list,
+        .placeholder-list {
+            margin: 0;
+            padding-left: 1.1rem;
+        }
+
+        .placeholder-meta {
+            margin-top: 1rem;
+            padding-top: 0.9rem;
+            border-top: 1px dashed #fdba74;
+            color: #9a3412;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+
+        .section-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .section-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff7ed;
+            border: 1px solid #fdba74;
+            color: #c2410c;
+            border-radius: 999px;
+            padding: 0.55rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .video-rail {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.25rem;
+        }
+
+        .feature-video {
+            background: linear-gradient(135deg, #fff7ed 0%, #fffbeb 100%);
+            border: 1px solid #fdba74;
+            border-radius: 22px;
+            padding: 1.6rem;
+            min-height: 100%;
+        }
+
+        .video-placeholder {
+            display: grid;
+            place-items: center;
+            min-height: 260px;
+            border-radius: 18px;
+            margin-top: 1rem;
+            background:
+                linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(249, 115, 22, 0.14)),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.6) 0, rgba(255,255,255,0.6) 12px, rgba(255,255,255,0.2) 12px, rgba(255,255,255,0.2) 24px);
+            color: #9a3412;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .build-band {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+            border: 1px solid #fed7aa;
+            border-radius: 22px;
+            padding: 1.75rem;
+        }
+
+        .footer-custom {
+            background: linear-gradient(135deg, #7c2d12 0%, #9a3412 55%, #c2410c 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-custom p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .video-rail,
+            .venture-grid,
+            .app-grid,
+            .video-grid,
+            .ops-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 74px;
+            }
+
+            .hero-section,
+            .content-card,
+            .build-band {
+                padding: 1.5rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-custom">
+        <div class="container d-flex align-items-center">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <a href="index.html" class="navbar-brand" style="margin: 0;">Michael Shen</a>
+                <span style="background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Entrepreneur</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <section class="hero-section">
+            <div class="hero-grid">
+                <div>
+                    <div class="role-pill">Independent Builder • Product Storyteller • App Creator</div>
+                    <h1>Entrepreneur Track</h1>
+                    <p>This page is structured to showcase the products, experiments, and public sharing work behind your independent builder profile. It is ready for you to plug in live Flutter apps, launch stories, traction highlights, and YouTube content as those materials are finalized.</p>
+                </div>
+                <div class="hero-side-panel">
+                    <h3>What This Page Will Hold</h3>
+                    <ul>
+                        <li>Production Flutter apps and launch links</li>
+                        <li>Product positioning, outcomes, and screenshots</li>
+                        <li>YouTube talks, demos, and founder-style sharings</li>
+                        <li>Operating cadence for build, learn, and iterate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">Builder Overview</h2>
+                    <p class="section-intro">Use this section as the short, high-level narrative for your entrepreneurial angle: what you build, why you build it, and the customer or workflow problems you choose to solve.</p>
+                </div>
+                <div class="section-chip">Founder Narrative Placeholder</div>
+            </div>
+
+            <div class="venture-grid">
+                <article class="venture-card">
+                    <div class="card-kicker">Positioning</div>
+                    <h3>Your Product Thesis</h3>
+                    <p>Replace this with a concise thesis such as decision-support tools, productivity products, AI-enabled workflow systems, or niche B2B utilities.</p>
+                    <div class="placeholder-meta">Add: 2-3 sentence founder statement</div>
+                </article>
+                <article class="venture-card">
+                    <div class="card-kicker">Audience</div>
+                    <h3>Who You Build For</h3>
+                    <p>Describe the users you serve, how they discover your products, and what specific pain points your apps or content are solving.</p>
+                    <div class="placeholder-meta">Add: target users, usage context, problem definition</div>
+                </article>
+                <article class="venture-card">
+                    <div class="card-kicker">Execution</div>
+                    <h3>How You Operate</h3>
+                    <p>Outline your own build loop, for example idea validation, prototype, launch, feedback review, and shipping iterations.</p>
+                    <div class="placeholder-meta">Add: your startup workflow and delivery rhythm</div>
+                </article>
+                <article class="venture-card">
+                    <div class="card-kicker">Proof</div>
+                    <h3>Signals To Show Later</h3>
+                    <ul class="placeholder-list">
+                        <li>Downloads, installs, waitlist size, or retention</li>
+                        <li>User quotes or feedback snapshots</li>
+                        <li>Revenue experiments or partnership leads</li>
+                        <li>Media mentions or speaking invitations</li>
+                    </ul>
+                    <div class="placeholder-meta">Add: actual traction metrics when available</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">Flutter Apps</h2>
+                    <p class="section-intro">This section is intentionally laid out to list all of your Flutter products. Each card is designed for one app and can later hold screenshots, launch links, App Store or Play links, and a compact product story.</p>
+                </div>
+                <div class="section-chip">App Portfolio Scaffold</div>
+            </div>
+
+            <div class="app-grid">
+                <article class="app-card">
+                    <div class="card-kicker">App 01</div>
+                    <h3>Primary Launch App</h3>
+                    <p>Use this slot for your most important or best-positioned Flutter app. It should lead with problem, target audience, platform, and why it matters.</p>
+                    <ul class="stack-list">
+                        <li>Platform: iOS / Android / Web</li>
+                        <li>Role: Founder, product design, engineering, launch</li>
+                        <li>Core capability: add your flagship workflow or feature</li>
+                    </ul>
+                    <div class="placeholder-meta">Add: live links, screenshots, metrics, release date</div>
+                </article>
+                <article class="app-card">
+                    <div class="card-kicker">App 02</div>
+                    <h3>Growth or Experiment App</h3>
+                    <p>Reserve this for a second product, side experiment, or niche app that demonstrates fast iteration, market testing, or technical breadth.</p>
+                    <ul class="stack-list">
+                        <li>Story angle: experiment, pivot, or user-requested feature set</li>
+                        <li>Distribution: store listing, TestFlight, or private pilot</li>
+                        <li>Outcome: lessons learned, engagement, or validation signal</li>
+                    </ul>
+                    <div class="placeholder-meta">Add: target users and product evolution notes</div>
+                </article>
+                <article class="app-card">
+                    <div class="card-kicker">App 03</div>
+                    <h3>Upcoming Product</h3>
+                    <p>Use this block for an upcoming build or a product currently under development. This keeps the page looking active even before launch.</p>
+                    <ul class="stack-list">
+                        <li>Status: ideation, prototype, beta, or pre-launch</li>
+                        <li>Customer problem: what gap it closes</li>
+                        <li>Validation plan: interviews, waitlist, or demo feedback</li>
+                    </ul>
+                    <div class="placeholder-meta">Add: roadmap and launch window</div>
+                </article>
+                <article class="app-card">
+                    <div class="card-kicker">App Library</div>
+                    <h3>All Other Flutter Builds</h3>
+                    <p>Use this card as a compact index if you later have more apps than the hero grid can comfortably display.</p>
+                    <ul class="stack-list">
+                        <li>Mini app names with one-line descriptions</li>
+                        <li>Internal demos, client prototypes, or MVPs</li>
+                        <li>Archived experiments worth mentioning</li>
+                    </ul>
+                    <div class="placeholder-meta">Add: short links to the rest of the app catalog</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">YouTube Sharings</h2>
+                    <p class="section-intro">This layout is prepared for your public speaking, product demos, founder reflections, educational clips, or technical breakdowns. You can add direct YouTube embeds or outbound links later.</p>
+                </div>
+                <div class="section-chip">Content Platform Scaffold</div>
+            </div>
+
+            <div class="video-rail">
+                <article class="feature-video">
+                    <div class="card-kicker">Featured Sharing</div>
+                    <h3>Main Talk or Product Demo</h3>
+                    <p>Use this larger panel for the one video you most want interviewers or visitors to see first. It can be a founder introduction, a demo, or a high-signal talk.</p>
+                    <div class="video-placeholder">Featured YouTube video embed or thumbnail goes here</div>
+                    <div class="placeholder-meta">Add: embed, title, watch link, and why it matters</div>
+                </article>
+
+                <div class="video-grid">
+                    <article class="video-card">
+                        <div class="card-kicker">Sharing 01</div>
+                        <h3>Product Walkthrough</h3>
+                        <p>Explain one product, one workflow, or one launch story with a short thumbnail, link, and key takeaway.</p>
+                        <div class="placeholder-meta">Add: video title, link, publish date</div>
+                    </article>
+                    <article class="video-card">
+                        <div class="card-kicker">Sharing 02</div>
+                        <h3>Founder Insight</h3>
+                        <p>Use this for your reflections on building, decision making, launching, growth, or lessons learned.</p>
+                        <div class="placeholder-meta">Add: summary and core message</div>
+                    </article>
+                    <article class="video-card">
+                        <div class="card-kicker">Sharing 03</div>
+                        <h3>Technical Breakdown</h3>
+                        <p>Reserve this block for architecture, Flutter engineering, AI integration, or product implementation stories.</p>
+                        <div class="placeholder-meta">Add: topic, audience, and CTA</div>
+                    </article>
+                    <article class="video-card">
+                        <div class="card-kicker">Sharing 04</div>
+                        <h3>Community or Event Talk</h3>
+                        <p>Use this area for meetup talks, interviews, livestreams, or cross-community content.</p>
+                        <div class="placeholder-meta">Add: event name, link, and context</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="build-band">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">Build System</h2>
+                    <p class="section-intro">This section lets you frame yourself as someone who does not just launch ideas, but also runs a repeatable system for product delivery and audience building.</p>
+                </div>
+                <div class="section-chip">Operations View</div>
+            </div>
+
+            <div class="ops-grid">
+                <article class="ops-card">
+                    <div class="card-kicker">Product</div>
+                    <h3>Discovery To Release</h3>
+                    <p>Describe how you evaluate ideas, collect user signals, prioritize features, and move to shipping.</p>
+                </article>
+                <article class="ops-card">
+                    <div class="card-kicker">Audience</div>
+                    <h3>Content Flywheel</h3>
+                    <p>Explain how YouTube, product demos, and public sharing support distribution, trust, and user acquisition.</p>
+                </article>
+                <article class="ops-card">
+                    <div class="card-kicker">Technology</div>
+                    <h3>Tools and Stack</h3>
+                    <p>Add Flutter, AI tools, analytics, automation, CI/CD, or design systems you rely on to move quickly.</p>
+                </article>
+                <article class="ops-card">
+                    <div class="card-kicker">Next</div>
+                    <h3>What You Are Building Now</h3>
+                    <p>Use this slot to keep the page fresh with your current sprint, next release, or next content series.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-custom">
+        <div class="container">
+            <p>Entrepreneur profile scaffold ready for app launches, product stories, and YouTube sharings.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
