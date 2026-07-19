@@ -45,20 +45,52 @@
             }
         }
 
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .profile-header .profile-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .profile-header h1,
+        .profile-header .subtitle,
+        .profile-header .tagline {
+            margin-bottom: 0;
+        }
+
+        .profile-header .subtitle {
+            margin-top: 8px;
+        }
+
+        .profile-header .tagline {
+            margin-top: 12px;
+        }
+
         .profile-pic {
-            width: 250px;
-            height: 180px;
-            border-radius: 18px;
+            display: block;
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 30px;
-            border: 4px solid #1e40af;
-            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+            object-position: 50% 25%;
+            border: 3px solid #ffffff;
+            outline: 2px solid #dbeafe;
+            outline-offset: 3px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(30, 64, 175, 0.3);
+            transform: scale(1.04);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
         }
 
         h1 {
@@ -416,6 +448,18 @@
                 padding: 40px 25px;
             }
 
+            .profile-header {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-header .subtitle,
+            .profile-header .tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             .company-grid {
                 grid-template-columns: 1fr;
             }
@@ -441,10 +485,14 @@
 </head>
 <body>
     <div class="container-main">
-        <img src="michael.jpg" alt="Michael Shen" class="profile-pic">
-        <h1>Michael Shen</h1>
-        <p class="subtitle">沈弓弘</p>
-        <p class="tagline">Experienced Program Manager & Software Test Engineer<br>Specialized in Test Automation & Hardware Validation</p>
+        <div class="profile-header">
+            <div class="profile-text">
+                <h1>Michael Shen</h1>
+                <p class="subtitle">沈弓弘</p>
+                <p class="tagline">Experienced Program Manager & Software Test Engineer<br>Specialized in Test Automation & Hardware Validation</p>
+            </div>
+            <img src="images/founder.jpg" alt="Michael Shen" class="profile-pic">
+        </div>
 
         <div id="showcaseCarousel" class="carousel slide showcase-slider" data-bs-ride="false">
             <div class="carousel-inner">
