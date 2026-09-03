@@ -325,21 +325,43 @@
             overflow: hidden;
         }
         
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
         .project-card {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 1.8rem;
-            margin-bottom: 1.5rem;
+            padding: 1.6rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             border-top: 4px solid #1e40af;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        
-        #projects .project-card:nth-child(2) { border-top-color: #7c3aed; }
-        #projects .project-card:nth-child(3) { border-top-color: #059669; }
-        #projects .project-card:nth-child(4) { border-top-color: #0b3d2e; }
+
+        .project-card p {
+            flex-grow: 1;
+        }
+
+        .project-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .project-grid .project-card:nth-child(2) { border-top-color: #7c3aed; }
+        .project-grid .project-card:nth-child(3) { border-top-color: #059669; }
+        .project-grid .project-card:nth-child(4) { border-top-color: #0b3d2e; }
+
+        @media (max-width: 700px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         
         .project-card:hover {
             box-shadow: 0 12px 24px rgba(30, 64, 175, 0.1);
@@ -491,7 +513,7 @@
     <!-- Summary Section -->
     <section id="summary" class="container">
         <h2>Professional Summary</h2>
-        <p>Highly accomplished Senior Test Development and Software Verification Engineer with over 15 years of expertise across systems validation, automation frameworks, and data center environments. Proven track record as a Primary Test Owner (PTO) managing virtualization architectures and leading cross-functional manufacturing test teams with global ODM partners. Adept at building scalable CI/CD pipelines and integrating cutting-edge Machine Learning and Generative AI methodologies (Google & Stanford Certified) to optimize testing infrastructure and maximize workflow efficiency.</p>
+        <p>Highly accomplished Senior Test Development and Software Verification Engineer with over 15 years of expertise across systems validation, automation frameworks, and data center environments. Proven track record as a Primary Test Owner (PTO) managing virtualization architectures, and as a Test Team Lead directing a 5-person manufacturing test engineering team across global ODM partners. Adept at building scalable CI/CD pipelines and integrating cutting-edge Machine Learning and Generative AI methodologies (Google & Stanford Certified) to optimize testing infrastructure and maximize workflow efficiency.</p>
     </section>
 
     <!-- Experience Section -->
@@ -503,6 +525,7 @@
             <p style="color: #7c3aed; font-weight: 500; margin-bottom: 0.5rem;">Application Engineer Staff / Test Team Lead</p>
             <p style="color: #7c3aed; font-weight: 500; margin-bottom: 1rem;">Apr 2014 – Feb 2026</p>
             <ul>
+                <li>Led a team of 5 manufacturing test application engineers, owning test strategy, task allocation, and technical mentorship across the group.</li>
                 <li>Developed automated test tools to improve test efficiency and reliability in mass production.</li>
                 <li>Created comprehensive test plans, covering functional, non-functional, system tests.</li>
                 <li>Leveraged AI-assisted coding tools to optimize workflow automation and accelerate test script development (GitHub Copilot and Gemini).</li>
@@ -605,9 +628,11 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active project-tab-panel" id="featured-projects" role="tabpanel" aria-labelledby="featured-projects-tab">
+              <div class="project-grid">
                 <div class="project-card">
                     <h3>Mobile-device Touch Tester</h3>
-                    <p>Developed a private repository to assist ODM partners in detecting touch panel defects, improving manufacturing quality.</p>
+                    <p>Developed a private automated testing tool to help ODM partners detect touch panel defects during mass production, replacing manual inspection and improving manufacturing quality and consistency.</p>
+                    <span class="skill-badge" style="background: #f1f5f9; color: #64748b;">Private repository — internal ODM tool</span>
                 </div>
 
                 <div class="project-card">
@@ -617,16 +642,17 @@
                 </div>
 
                 <div class="project-card">
-                    <h3>Critical Choice (Flutter iOS App)</h3>
-                    <p>Designed, built, and launched a production mobile application on the Apple App Store utilizing Flutter/Dart to assist professionals with algorithmic task prioritization.</p>
-                    <a href="https://apps.apple.com/us/app/critical-choice/id6756776644" target="_blank" class="btn-learn-more">View on App Store →</a>
+                    <h3>EatOrNot AI (Flutter iOS App)</h3>
+                    <p>Designed, built, and launched a production mobile application on the Apple App Store utilizing Flutter/Dart and AI-powered meal photo/voice analysis to give users instant, traffic-light nutrition guidance.</p>
+                    <a href="https://apps.apple.com/us/app/eatornot-ai/id6771192711" target="_blank" class="btn-learn-more">View on App Store →</a>
                 </div>
 
-                <div class="project-card">
-                    <h3>食安雷達 (Food Safety Radar)</h3>
-                    <p>Designed, built, and launched a full-stack civic-data product on Firebase — client-side search over 3,500+ government food-recall records, an email watchlist with transactional alerts, and end-to-end security hardening including Cloud Function IAM lockdown, cost-abuse defenses, and PDPA-compliant consent handling.</p>
-                    <a href="https://safety.micavo.app" target="_blank" class="btn-learn-more">View Live Site →</a>
+                <div class="project-card project-card-wide" style="border-top-color: #d97706;">
+                    <h3>More Independent Products</h3>
+                    <p>Five more live apps and platforms under my Micavo studio and AsianLaunch — Critical Choice, Outshine, TallCenter, AsianLaunch, and 食安雷達 (Food Safety Radar) — with full product details on the Entrepreneur Track page.</p>
+                    <a href="entrepreneur.html" class="btn-learn-more">View Entrepreneur Track →</a>
                 </div>
+              </div>
             </div>
 
             <div class="tab-pane fade project-tab-panel" id="ml-projects" role="tabpanel" aria-labelledby="ml-projects-tab">
@@ -656,18 +682,6 @@
                                 <td>
                                     <a href="https://github.com/Michael-Shen/ML_Projects" target="_blank">Server Malfunction Detection</a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Supervised Learning</td>
-                                <td>Linear & Logistic Regression (TBD)</td>
-                            </tr>
-                            <tr>
-                                <td>Deep Learning</td>
-                                <td>Neural Networks (TBD)</td>
-                            </tr>
-                            <tr>
-                                <td>LLM Fine-tuning</td>
-                                <td>Coming Soon</td>
                             </tr>
                         </tbody>
                     </table>
@@ -712,7 +726,7 @@
     <!-- Footer -->
     <footer class="footer-custom">
         <div class="container">
-            <p>&copy; 2025 Michael Shen. All rights reserved.</p>
+            <p>&copy; 2026 Michael Shen. All rights reserved.</p>
         </div>
     </footer>
 

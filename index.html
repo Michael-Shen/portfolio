@@ -134,7 +134,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #64748b;
+            color: #1e293b;
             margin-bottom: 14px;
         }
 
@@ -254,10 +254,22 @@
             line-height: 1.4;
         }
 
+        .feature-scroll-wrap {
+            position: relative;
+        }
+
         .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            display: flex;
             gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 2px;
+        }
+
+        .feature-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .feature-card {
@@ -267,6 +279,37 @@
             padding: 14px 16px;
             box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
+            flex: 0 0 calc(50% - 6px);
+            scroll-snap-align: start;
+        }
+
+        .feature-scroll-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .feature-scroll-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 999px;
+            background: #eef2ff;
+            color: #1e40af;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .feature-scroll-btn:hover {
+            background: #1e40af;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .feature-card {
+                flex: 0 0 84%;
+            }
         }
 
         .feature-card:hover {
@@ -468,10 +511,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
             .btn-container {
                 flex-direction: column;
             }
@@ -488,7 +527,7 @@
         <div class="profile-header">
             <div class="profile-text">
                 <h1>Michael Shen</h1>
-                <p class="tagline">Experienced Program Manager & Software Test Engineer<br>Specialized in Test Automation & Hardware Validation</p>
+                <p class="tagline">Program Manager · Test Engineer · Independent Builder<br>15+ years in test automation and hardware validation, now shipping AI products as a solo founder</p>
             </div>
             <img src="images/founder.jpg" alt="Michael Shen" class="profile-pic">
         </div>
@@ -548,32 +587,58 @@
                 <div class="carousel-item">
                     <div class="showcase-slide">
                         <div class="company-strip-title">Featured Projects</div>
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-badge">FinTech</div>
-                                <div class="feature-title">Stock Selection System</div>
-                                <div class="feature-meta">Automated market-data workflow with CI/CD-backed development and testing.</div>
+                        <div class="feature-scroll-wrap">
+                            <div class="feature-grid" id="featureScroll">
+                                <div class="feature-card">
+                                    <div class="feature-badge">FinTech</div>
+                                    <div class="feature-title">Stock Selection System</div>
+                                    <div class="feature-meta">Automated market-data workflow with CI/CD-backed development and testing.</div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-badge">Manufacturing</div>
+                                    <div class="feature-title">Touch Tester</div>
+                                    <div class="feature-meta">ODM-focused validation tooling for touch panel defect detection and quality improvement.</div>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-badge">ML</div>
+                                    <div class="feature-title">ML Repositories</div>
+                                    <div class="feature-meta">Hands-on clustering, anomaly detection, and applied machine learning experiments.</div>
+                                </div>
+                                <a class="feature-card feature-card-link" href="https://safety.micavo.app" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">GovTech</div>
+                                    <div class="feature-title">食安雷達 Food Safety Radar</div>
+                                    <div class="feature-meta">Full-stack civic-data product with instant recall search and email watchlist alerts. Live at safety.micavo.app.</div>
+                                </a>
+                                <a class="feature-card feature-card-link" href="https://apps.apple.com/us/app/eatornot-ai/id6771192711" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">AI Nutrition</div>
+                                    <div class="feature-title">EatOrNot AI</div>
+                                    <div class="feature-meta">Traffic-light food decisions from meal photo/voice analysis. Live on the App Store.</div>
+                                </a>
+                                <a class="feature-card feature-card-link" href="https://apps.apple.com/us/app/outshine/id6782229641" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">AI Career</div>
+                                    <div class="feature-title">Outshine</div>
+                                    <div class="feature-meta">Real-time AI coaching during meetings, plus automatic summaries. Live on the App Store.</div>
+                                </a>
+                                <a class="feature-card feature-card-link" href="https://apps.apple.com/tw/app/%E9%97%9C%E9%8D%B5%E4%BB%BB%E5%8B%99/id6756776644" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">Mobile App</div>
+                                    <div class="feature-title">Critical Choice</div>
+                                    <div class="feature-meta">Flutter iOS app for algorithmic task prioritization and decision support.</div>
+                                </a>
+                                <a class="feature-card feature-card-link" href="https://apps.apple.com/tw/app/id6797482622" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">Height & Growth</div>
+                                    <div class="feature-title">TallCenter</div>
+                                    <div class="feature-meta">Teen height prediction and growth tracking. Live on the App Store.</div>
+                                </a>
+                                <a class="feature-card feature-card-link" href="https://asianlaunch.com/" target="_blank" rel="noopener noreferrer">
+                                    <div class="feature-badge">Market Entry</div>
+                                    <div class="feature-title">AsianLaunch</div>
+                                    <div class="feature-meta">Product discovery and launch platform connecting global products with Asian markets.</div>
+                                </a>
                             </div>
-                            <div class="feature-card">
-                                <div class="feature-badge">Mobile App</div>
-                                <div class="feature-title">Critical Choice</div>
-                                <div class="feature-meta">Flutter iOS app designed for algorithmic task prioritization and decision support.</div>
+                            <div class="feature-scroll-nav">
+                                <button class="feature-scroll-btn" type="button" onclick="document.getElementById('featureScroll').scrollBy({left: -280, behavior: 'smooth'})" aria-label="Scroll projects left">&#8249;</button>
+                                <button class="feature-scroll-btn" type="button" onclick="document.getElementById('featureScroll').scrollBy({left: 280, behavior: 'smooth'})" aria-label="Scroll projects right">&#8250;</button>
                             </div>
-                            <div class="feature-card">
-                                <div class="feature-badge">Manufacturing</div>
-                                <div class="feature-title">Touch Tester</div>
-                                <div class="feature-meta">ODM-focused validation tooling for touch panel defect detection and quality improvement.</div>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-badge">ML</div>
-                                <div class="feature-title">ML Repositories</div>
-                                <div class="feature-meta">Hands-on clustering, anomaly detection, and applied machine learning experiments.</div>
-                            </div>
-                            <a class="feature-card feature-card-link" href="https://safety.micavo.app" target="_blank" rel="noopener noreferrer">
-                                <div class="feature-badge">GovTech</div>
-                                <div class="feature-title">食安雷達 Food Safety Radar</div>
-                                <div class="feature-meta">Full-stack Firebase product surfacing Taiwan government food-recall data with instant search and email watchlist alerts. Live at safety.micavo.app.</div>
-                            </a>
                         </div>
                     </div>
                 </div>

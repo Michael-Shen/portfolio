@@ -276,21 +276,39 @@
             overflow: hidden;
         }
 
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
         .project-card {
             background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
             border: 1px solid #bbf7d0;
             border-radius: 12px;
-            padding: 1.8rem;
-            margin-bottom: 1.5rem;
+            padding: 1.6rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             border-top: 4px solid #15803d;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
-        #projects .project-card:nth-child(2) { border-top-color: #0f766e; }
-        #projects .project-card:nth-child(3) { border-top-color: #65a30d; }
-        #projects .project-card:nth-child(4) { border-top-color: #0b3d2e; }
+        .project-card p {
+            flex-grow: 1;
+        }
+
+        .project-grid .project-card:nth-child(2) { border-top-color: #0f766e; }
+        .project-grid .project-card:nth-child(3) { border-top-color: #65a30d; }
+        .project-grid .project-card:nth-child(4) { border-top-color: #0b3d2e; }
+
+        @media (max-width: 700px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .project-card:hover {
             box-shadow: 0 12px 24px rgba(21, 128, 61, 0.1);
@@ -436,7 +454,7 @@
 
     <section id="summary" class="container">
         <h2>Professional Summary</h2>
-        <p>PMP-certified Technical Program Manager with 15+ years of experience leading cross-functional initiatives across systems validation, manufacturing operations, automation frameworks, and data center environments. Proven track record in driving NPI readiness, aligning global ODM partners, and improving execution through scalable CI/CD processes, workflow automation, and data-driven decision-making. Combines engineering depth with program leadership, stakeholder coordination, and practical AI adoption to improve delivery speed, quality, and operational efficiency.</p>
+        <p>PMP-certified Technical Program Manager with 15+ years of experience leading cross-functional initiatives across systems validation, manufacturing operations, automation frameworks, and data center environments. Directs a 5-person manufacturing test engineering team while driving NPI readiness, aligning global ODM partners, and improving execution through scalable CI/CD processes, workflow automation, and data-driven decision-making. Combines engineering depth with program leadership, stakeholder coordination, and practical AI adoption to improve delivery speed, quality, and operational efficiency.</p>
     </section>
 
     <section id="experience" class="container">
@@ -447,6 +465,7 @@
             <p style="color: #15803d; font-weight: 500; margin-bottom: 0.5rem;">Application Engineer Staff / Test Team Lead</p>
             <p style="color: #15803d; font-weight: 500; margin-bottom: 1rem;">Apr 2014 – Feb 2026</p>
             <ul>
+                <li>Led a team of 5 manufacturing test application engineers, owning task allocation, technical mentorship, and delivery accountability.</li>
                 <li>Led manufacturing test execution across NPI and mass-production programs, coordinating teams, vendors, and test resources.</li>
                 <li>Drove readiness planning for production launches, balancing quality, schedule, and operational constraints.</li>
                 <li>Established automated tooling and process improvements to raise production efficiency and reduce execution risk.</li>
@@ -547,9 +566,11 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active project-tab-panel" id="featured-projects" role="tabpanel" aria-labelledby="featured-projects-tab">
+              <div class="project-grid">
                 <div class="project-card">
                     <h3>Mobile-device Touch Tester</h3>
-                    <p>Developed a private repository to assist ODM partners in detecting touch panel defects, improving manufacturing quality.</p>
+                    <p>Developed a private automated testing tool to help ODM partners detect touch panel defects during mass production, replacing manual inspection and improving manufacturing quality and consistency.</p>
+                    <span class="skill-badge" style="background: #f1f5f9; color: #64748b;">Private repository — internal ODM tool</span>
                 </div>
 
                 <div class="project-card">
@@ -569,6 +590,13 @@
                     <p>Designed, built, and launched a full-stack civic-data product on Firebase — client-side search over 3,500+ government food-recall records, an email watchlist with transactional alerts, and end-to-end security hardening including Cloud Function IAM lockdown, cost-abuse defenses, and PDPA-compliant consent handling.</p>
                     <a href="https://safety.micavo.app" target="_blank" class="btn-learn-more">View Live Site →</a>
                 </div>
+
+                <div class="project-card" style="border-top-color: #ca8a04;">
+                    <h3>More Independent Products</h3>
+                    <p>Additional live apps and platforms under my Micavo studio and AsianLaunch — EatOrNot AI, Outshine, TallCenter, and AsianLaunch — with full product details on the Entrepreneur Track page.</p>
+                    <a href="entrepreneur.html" class="btn-learn-more">View Entrepreneur Track →</a>
+                </div>
+              </div>
             </div>
 
             <div class="tab-pane fade project-tab-panel" id="ml-projects" role="tabpanel" aria-labelledby="ml-projects-tab">
@@ -598,18 +626,6 @@
                                 <td>
                                     <a href="https://github.com/Michael-Shen/ML_Projects" target="_blank">Server Malfunction Detection</a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Supervised Learning</td>
-                                <td>Linear & Logistic Regression (TBD)</td>
-                            </tr>
-                            <tr>
-                                <td>Deep Learning</td>
-                                <td>Neural Networks (TBD)</td>
-                            </tr>
-                            <tr>
-                                <td>LLM Fine-tuning</td>
-                                <td>Coming Soon</td>
                             </tr>
                         </tbody>
                     </table>
@@ -651,7 +667,7 @@
 
     <footer class="footer-custom">
         <div class="container">
-            <p>&copy; 2025 Michael Shen. All rights reserved.</p>
+            <p>&copy; 2026 Michael Shen. All rights reserved.</p>
         </div>
     </footer>
 
