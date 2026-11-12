@@ -8,337 +8,75 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+        :root { --bg: #0a0f1f; --card: #111a33; --card2: #0e1630; --line: rgba(148,163,255,.16); --ink: #f1f5ff; --muted: #a3b0d0; --a1: #60a5fa; --a2: #a78bfa; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 112.5%; }
+        body { font-family: 'Inter', sans-serif; color: var(--ink); line-height: 1.65; padding-top: 68px; -webkit-font-smoothing: antialiased;
+            background: radial-gradient(900px 500px at 12% -5%, rgba(96,165,250,.20), transparent 60%), radial-gradient(800px 500px at 95% 5%, rgba(167,139,250,.16), transparent 60%), var(--bg); background-attachment: fixed; }
+        .container { width: 100%; max-width: 1060px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+        h1, h2, h3, .navbar-brand { font-family: 'Poppins', sans-serif; }
 
-        body {
-            background:
-                radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 28%),
-                radial-gradient(circle at top right, rgba(29, 78, 216, 0.16), transparent 24%),
-                linear-gradient(180deg, #f8fafc 0%, #eff6ff 42%, #eaf3ff 100%);
-            background-attachment: fixed;
-            color: #101624;
-            padding-top: 82px;
-        }
+        .navbar-custom { position: fixed; top: 0; width: 100%; z-index: 1000; height: 68px; display: flex; align-items: center; background: rgba(10,15,31,.75); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+        .navbar-brand { font-size: 1.2rem; font-weight: 700; color: var(--ink) !important; text-decoration: none; }
+        .navbar-custom .container > div > span { background: linear-gradient(135deg, var(--a1), var(--a2)) !important; color: #0a0f1f !important; border-radius: 999px !important; padding: .25rem .8rem !important; font-size: .78rem !important; font-weight: 700 !important; }
+        .nav-links { margin-left: auto; display: flex; gap: 1.5rem; }
+        .nav-links a { font-size: .92rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+        .nav-links a:hover { color: #fff; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
 
-        .navbar-custom {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(37, 99, 235, 0.18);
-        }
+        section { margin: 0; scroll-margin-top: 90px; }
+        section, section:hover { transform: none !important; background-color: transparent !important; transition: none; }
+        section h2 { border-left: none !important; padding-left: 0 !important; }
 
-        .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2563eb !important;
-            text-decoration: none;
-        }
+        /* Hero */
+        .hero-section { padding: 5rem 0 3.5rem; background: none; color: var(--ink); border-radius: 0; box-shadow: none; margin: 0; }
+        .hero-section::after { display: none; }
+        .hero-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(270px,.9fr); gap: 3rem; align-items: center; }
+        .role-pill { display: inline-block; background: rgba(96,165,250,.12); border: 1px solid rgba(96,165,250,.35); color: var(--a1); border-radius: 999px; padding: .4rem 1rem; font-size: .85rem; font-weight: 600; margin-bottom: 1.4rem; }
+        .hero-section h1 { font-size: 3.6rem; font-weight: 700; line-height: 1.08; letter-spacing: -1px; margin: 0 0 1.2rem; background: linear-gradient(135deg, #fff 30%, var(--a1) 70%, var(--a2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-section p { font-size: 1.1rem; line-height: 1.8; color: var(--muted); margin: 0; }
+        .hero-side-panel { background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .hero-side-panel h3 { font-size: .85rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--a1); margin: 0 0 .5rem; font-weight: 600; }
+        .hero-side-panel ul { list-style: none; padding: 0; margin: 0; }
+        .hero-side-panel li { padding: .8rem 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: .98rem; }
+        .hero-side-panel li:last-child { border-bottom: none; padding-bottom: 0; }
 
-        .navbar-brand:hover {
-            color: #1e3a8a !important;
-        }
+        /* Sections */
+        .content-card, .build-band { background: none; border: none; box-shadow: none; border-radius: 0; padding: 3.25rem 0 0; }
+        .build-band { padding-bottom: 2rem; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
+        .section-title { font-size: 2rem; font-weight: 700; color: var(--ink); margin: 0 0 .4rem; letter-spacing: -.3px; }
+        .section-intro { color: var(--muted); line-height: 1.7; margin: 0; max-width: 650px; }
+        .section-chip { display: inline-block; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.35); color: var(--a2); border-radius: 999px; padding: .35rem .9rem; font-size: .82rem; font-weight: 600; }
 
-        .container {
-            max-width: 1080px;
-        }
+        .venture-grid, .app-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.1rem; }
+        .app-grid-single { grid-template-columns: minmax(0,1fr); }
+        .ops-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.1rem; }
+        .venture-card, .app-card, .ops-card { position: relative; background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%); border: 1px solid var(--line); border-radius: 18px; padding: 1.6rem; height: 100%; transition: transform .25s, border-color .25s, box-shadow .25s; }
+        .venture-card:hover, .app-card:hover, .ops-card:hover { transform: translateY(-4px); border-color: rgba(96,165,250,.55); box-shadow: 0 18px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(96,165,250,.2); }
+        .app-card-wide { grid-column: 1 / -1; }
 
-        section {
-            margin-bottom: 2rem;
-        }
+        .card-kicker { display: inline-block; color: var(--a1); font-size: .78rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: .7rem; background: none; padding: 0; }
+        .app-card-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .7rem; }
+        .app-card-head .card-kicker { margin-bottom: 0; }
+        .app-icon { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(0,0,0,.45); flex-shrink: 0; }
+        .app-icon.app-icon-pad { object-fit: contain; background: #fff; padding: 10px; }
 
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 28px;
-            box-shadow: 0 24px 60px rgba(30, 58, 138, 0.22);
-            margin-bottom: 2rem;
-        }
+        .venture-card h3, .app-card h3, .ops-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--ink); margin: 0 0 .6rem; }
+        .venture-card p, .app-card p, .ops-card p, .stack-list li { color: var(--muted); line-height: 1.7; font-size: 1rem; }
+        .stack-list { margin: 0; padding-left: 1.1rem; }
+        .stack-list li::marker { color: var(--a2); }
+        .placeholder-meta { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .98rem; color: var(--muted); }
+        .placeholder-meta a { color: var(--a1); font-weight: 600; text-decoration: none; }
+        .placeholder-meta a:hover { color: #fff; }
+        .status-note { display: inline-block; margin-top: 1.2rem; background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.3); color: #fcd34d; border-radius: 10px; padding: .4rem .9rem; font-size: .9rem; }
 
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
-        }
+        .footer-custom { background: none; color: var(--muted); padding: 2.5rem 0; margin-top: 2rem; text-align: center; border-top: 1px solid var(--line); font-size: .92rem; }
+        .footer-custom p { margin: 0; color: var(--muted); }
+        .footer-custom a { color: var(--a1) !important; }
 
-        .hero-grid {
-            position: relative;
-            z-index: 1;
-            display: grid;
-            grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.9fr);
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .hero-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.7rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-section p {
-            font-size: 1.03rem;
-            line-height: 1.7;
-            margin-bottom: 0;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .role-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 999px;
-            padding: 0.55rem 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .hero-side-panel {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 22px;
-            padding: 1.5rem;
-            backdrop-filter: blur(6px);
-        }
-
-        .hero-side-panel h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-side-panel ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .hero-side-panel li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-            color: rgba(255, 255, 255, 0.92);
-        }
-
-        .hero-side-panel li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(37, 99, 235, 0.16);
-            border-radius: 22px;
-            padding: 2rem;
-            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-        }
-
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.75rem;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-        }
-
-        .section-intro {
-            color: #5d6b82;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .venture-grid,
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.25rem;
-        }
-
-        .app-grid-single {
-            grid-template-columns: minmax(0, 1fr);
-        }
-
-        .ops-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.25rem;
-        }
-
-        .venture-card,
-        .app-card,
-        .ops-card {
-            background: linear-gradient(180deg, #ffffff 0%, #eaf3ff 100%);
-            border: 1px solid #bfdbfe;
-            border-radius: 18px;
-            padding: 1.4rem;
-            height: 100%;
-        }
-
-        .card-kicker {
-            display: inline-block;
-            padding: 0.35rem 0.7rem;
-            border-radius: 999px;
-            background: #dbeafe;
-            color: #2563eb;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 0.9rem;
-        }
-
-        .app-card-head {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .app-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
-            border: 1px solid rgba(37, 99, 235, 0.18);
-            flex-shrink: 0;
-        }
-
-        .app-icon.app-icon-pad {
-            object-fit: contain;
-            background: #ffffff;
-            padding: 10px;
-        }
-
-        .app-card-head .card-kicker {
-            margin-bottom: 0;
-        }
-
-        .venture-card h3,
-        .app-card h3,
-        .ops-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            color: #101624;
-            margin-bottom: 0.65rem;
-        }
-
-        .venture-card p,
-        .app-card p,
-        .ops-card p,
-        .stack-list li,
-        .placeholder-list li {
-            color: #5d6b82;
-            line-height: 1.65;
-        }
-
-        .stack-list,
-        .placeholder-list {
-            margin: 0;
-            padding-left: 1.1rem;
-        }
-
-        .placeholder-meta {
-            margin-top: 1rem;
-            padding-top: 0.9rem;
-            border-top: 1px dashed #93c5fd;
-            color: #1e3a8a;
-            font-size: 0.92rem;
-            font-weight: 500;
-        }
-
-        .placeholder-meta a {
-            color: #2563eb;
-            font-weight: 700;
-            text-decoration: underline;
-        }
-
-        .placeholder-meta a:hover {
-            color: #1e3a8a;
-        }
-
-        .section-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .section-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #eff6ff;
-            border: 1px solid #93c5fd;
-            color: #2563eb;
-            border-radius: 999px;
-            padding: 0.55rem 0.9rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .build-band {
-            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
-            border: 1px solid #bfdbfe;
-            border-radius: 22px;
-            padding: 1.75rem;
-        }
-
-        .footer-custom {
-            background: linear-gradient(135deg, #101624 0%, #1e3a8a 55%, #2563eb 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-custom p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        @media (max-width: 900px) {
-            .hero-grid,
-            .venture-grid,
-            .app-grid,
-            .ops-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 74px;
-            }
-
-            .hero-section,
-            .content-card,
-            .build-band {
-                padding: 1.5rem;
-            }
-
-            .hero-section h1 {
-                font-size: 2.1rem;
-            }
-        }
+        @media (max-width: 900px) { .hero-grid, .venture-grid, .app-grid, .ops-grid { grid-template-columns: 1fr; } .hero-grid { gap: 2rem; } }
+        @media (max-width: 768px) { .hero-section { padding: 3rem 0 2rem; } .hero-section h1 { font-size: 2.5rem; } .content-card, .build-band { padding-top: 2.25rem; } .section-title { font-size: 1.6rem; } }
     </style>
 </head>
 <body>
@@ -348,6 +86,7 @@
                 <a href="index.html" class="navbar-brand" style="margin: 0;">Michael Shen</a>
                 <span style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Entrepreneur</span>
             </div>
+            <div class="nav-links"><a href="#overview">Overview</a><a href="#apps">Apps</a><a href="#platforms">Platforms</a><a href="#agent">Agentic AI</a><a href="#build">Build System</a></div>
         </div>
     </nav>
 
@@ -371,7 +110,7 @@
             </div>
         </section>
 
-        <section class="content-card">
+        <section class="content-card" id="overview">
             <div class="section-header-row">
                 <div>
                     <h2 class="section-title">Builder Overview</h2>
@@ -404,7 +143,7 @@
             </div>
         </section>
 
-        <section class="content-card">
+        <section class="content-card" id="apps">
             <div class="section-header-row">
                 <div>
                     <h2 class="section-title">Flutter Apps</h2>
@@ -486,7 +225,7 @@
                         <a href="https://apps.apple.com/tw/app/id6797482622" target="_blank" rel="noopener noreferrer">App Store</a>
                     </div>
                 </article>
-                <article class="app-card">
+                <article class="app-card app-card-wide">
                     <div class="app-card-head">
                         <div class="card-kicker">Brand</div>
                         <img class="app-icon app-icon-pad" src="images/products/micavo.svg" alt="Micavo logo">
@@ -500,7 +239,7 @@
             </div>
         </section>
 
-        <section class="content-card">
+        <section class="content-card" id="platforms">
             <div class="section-header-row">
                 <div>
                     <h2 class="section-title">AsianLaunch</h2>
@@ -557,7 +296,31 @@
             </div>
         </section>
 
-        <section class="build-band">
+        <section class="content-card" id="agent">
+            <div class="section-header-row">
+                <div>
+                    <h2 class="section-title">AI Agent Battle</h2>
+                    <p class="section-intro">The next product on the track — an observability layer for AI coding agents. Currently in the design stage; not yet built end to end or launched.</p>
+                </div>
+                <div class="section-chip">In Development</div>
+            </div>
+
+            <div class="app-grid app-grid-single">
+                <article class="app-card">
+                    <div class="card-kicker">Agentic AI · Observability</div>
+                    <h3>AI Agent Battle / Living Kingdom</h3>
+                    <p>Turns what AI coding agents are doing into a clear, trustworthy live view. The proposed pipeline: Claude Code Hook → local spool/uploader → Firebase aggregation → Flutter visualization.</p>
+                    <ul class="stack-list">
+                        <li>Design focus: event identity, deduplication, out-of-order events, and stale/unknown status</li>
+                        <li>Trust model: explicit privacy and trust boundaries for telemetry leaving the local machine</li>
+                        <li>Principle: tool activity is not verified success — completion needs user-validated acceptance</li>
+                    </ul>
+                    <span class="status-note">Status: architecture and requirements documented; full E2E integration and launch not yet completed.</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="build-band" id="build">
             <div class="section-header-row">
                 <div>
                     <h2 class="section-title">Build System</h2>
